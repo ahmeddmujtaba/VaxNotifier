@@ -1,1 +1,2 @@
 # VaxNotifier
+Vaccine Notification System
