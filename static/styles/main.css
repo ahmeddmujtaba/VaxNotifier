@@ -1,0 +1,30 @@
+body {
+	background-color: #E5E5E5;
+}
+
+.row {
+	background-color: #51B2F9;
+	margin: 100px auto;
+	height: 500px;
+}
+
+#form {
+	background-color: white;
+	padding: 50px;
+}
+
+#title {
+	color: white;
+	padding: 50px;
+}
+
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 2px solid white;
+}
+
+button {
+	background-color: btn btn-outline-primary;
+}
