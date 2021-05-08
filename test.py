@@ -17,7 +17,7 @@ from trycourier import Courier
 import requests
 
 
-def send_message(name, phone_number):
+def send_message(name, phone_number,location):
 
     client = Courier(auth_token="pk_prod_2VV62WNPT1MWJRQQGZM4PFGVH1HX")
 

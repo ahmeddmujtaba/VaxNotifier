@@ -56,6 +56,11 @@
               {{ form.password(size=32) }}
             </p>
 
+            <p>
+              {{ form.location.label }}<br />
+              {{ form.location(size=32) }}
+            </p>
+
             <p>{{ form.submit() }}</p>
           </form>
           {% endblock %}
