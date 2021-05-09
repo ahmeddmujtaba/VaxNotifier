@@ -1,9 +1,16 @@
 import requests
 import json
-import pyap
-import re
 
+import re
+from firebase import firebase
+from test import send_alert
 #cockroach sql --url 'postgres://amujtaba00:jCUTIPzcj-KdOXsV@free-tier5.gcp-europe-west1.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full&sslrootcert=<your_certs_directory>/cc-ca.crt&options=--cluster=lonely-gecko-289'
+firebase = firebase.FirebaseApplication('https://vaxxnotifier-default-rtdb.firebaseio.com/',None)
+result = firebase.get('/',None)
+print(result)
+
+
+
 
 # Variables needed
 API_KEY = 'Sl3MujcYCbOHVXeE2FaGKGYWb'
@@ -26,7 +33,7 @@ def auth():
 
 
 def create_url():
-    url = 'https://api.twitter.com/2/tweets/search/recent?query=from:1373531468744552448&tweet.fields=created_at,in_reply_to_user_id&max_results=10'
+    url = 'https://api.twitter.com/2/tweets/search/recent?query=from:1373531468744552448&tweet.fields=created_at,in_reply_to_user_id,source&max_results=50'
     return(url)
 
 
@@ -49,20 +56,25 @@ headers = create_headers(bearer_token)
 json_response = connect_to_endpoint(url, headers)
 
 
-for x in json_response['data']:
-    try:
-        if x['in_reply_to_user_id']:
-            continue
+for person in result:
+    info = result[person].split('|')
+    name = info[0]
+    location = info[1]
+    phonenumber = info[2]
+    age = info[3]
 
-    except:
-        pass
-    if city in x['text'] or province in x['text']:
-        print(x)
 
-    regexp = "[0-9]{1,5} [A-Z].+ [A-Z].+ "
-    address = re.findall(regexp, x['text'])
-    for i in address:
-        accAddress = " ".join(i.split(" ")[:3])
-        print(accAddress)
-    
+    for x in json_response['data']:
+        try:
+            if x['in_reply_to_user_id']:
+                continue
 
+        except:
+            pass
+        if location in x['text']:
+            print(x)
+            source = x['id']
+            tweetURL = f'https://twitter.com/VaxHuntersCan/status/{source}?s=50'
+            send_alert(name, phonenumber,location,age,x['text'])
+            
+print('end')

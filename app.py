@@ -16,7 +16,7 @@ class LoginForm(FlaskForm):
     username = StringField('First Name', validators=[DataRequired()])
     lastName = StringField('Last Name', validators=[DataRequired()])
 
-    location = StringField('Last Name', validators=[DataRequired()])
+    location = StringField('Location', validators=[DataRequired()])
     
     password = StringField('Phone Number', validators=[DataRequired()])
     age = StringField('Age', validators=[DataRequired()])
@@ -38,9 +38,9 @@ def hello():
         print(form.lastName.data)
         print(form.password.data)
         print(form.age.data)
-        send_message(form.username.data+form.lastName.data, form.password.data,form.location.data)
+        send_message(form.username.data + " " + form.lastName.data, form.password.data,form.location.data,form.age.data)
 
-    return render_template('main.html', title='Vaxx', form=form)
+    return render_template('index.html', title='Vaxx', form=form)
 
 
 # Keep this at the bottom of app.py
