@@ -20,7 +20,7 @@ default_app = firebase_admin.initialize_app(cred, {
 })
 # firebase = firebase.FirebaseApplication('https://vaxxnotifier-default-rtdb.firebaseio.com/',None)
 
-account_sid = "AC05ac7bcc3488e0caf9e699a52c96df0d"
+
 account_sid = config('TWILIO_SID')
 auth_token = config('TWILIO_AUTH_TOKEN')
 
