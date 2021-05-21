@@ -62,3 +62,12 @@ button {
   background-color: #51b2f9;
   border-color: #51b2f9;
 }
+
+button.btn.dropdown-toggle.btn-light {
+  border: 1px solid #ced4da;
+}
+
+.form-control {
+  background-color: white !important;
+  border: 1px solid #ced4da !important;
+}

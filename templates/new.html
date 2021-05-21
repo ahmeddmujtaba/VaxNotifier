@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+
+        alert(document.getElementById("flexCheckDefault").className)
+      
+        if($('#flexCheckDefault').is(':checked')){
+            alert("HELLO!")
+        }
+      </script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/styles/main.css"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+      integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css"
+    />
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
+    <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
+    <script type='text/javascript' src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body style="height: 100vh; width: 100vw; ">
+    <div class="container-fluid-nav bg-light text-center" style="background-color: aliceblue;">
+        <span class="navbar-text mb-0 h3">VaxNotifier</span>
+      </div> 
+    <div class="image-container" style="background-image: url('/static/images/bg2.jpeg'); background-repeat: no-repeat; height: 100vh; background-position: center; background-size: cover;padding-top: 80px;">
+    
+    <!-- <div class="form-row">
+        <div
+      class="w-50 d-flex justify-content-center"
+      style="text-align:center"
+    >
+    hELLO
+        </div> -->
+    <div
+      class="w-50 d-flex justify-content-center"
+      style="text-align:center; padding:30px"
+    >
+      <form action="/submitted" method="POST" style="background:aliceblue;text-align:center;border-radius: 3px;padding-top: 60px;padding: 50px; border: 1px solid">
+        
+        <h3 style="color:black;" >Sign Up</h3>
+    
+        <div class="form-row">
+          <div class="form-group col-md-12">
+              <label class="control-label" for="inputEmail4" class="fa fa-user"></label>
+            <input
+              type="name"
+              class="form-control"
+              id="inputEmail4"
+              placeholder="First Name"
+              name="firstName"
+              required
+            />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <input
+              type="lastName"
+              class="form-control"
+              id="inputPassword4"
+              placeholder="Last Name"
+              name="lastName"
+              required
+            />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-8">
+            <input
+              type="tel"
+              class="form-control"
+              id="phone"
+              name="phone"
+              placeholder="Phone Number"
+              required
+            />
+          </div>
+          <div class="form-group col-md-4">
+            <input
+              type="tel"
+              class="form-control"
+              id="age"
+              name="age"
+              placeholder="Age"
+              
+            />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-12">
+            <select
+            style="border: 1px solid;"
+              data-live-search="true"
+              id="cities"
+              name="cityPicker"
+              class="form-control"
+              required
+            >
+              {% for city in cities %}
+              <option>{{city}}</option>s
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form-check" style="text-align:center; width:100%">
+            <input class="form-check-input" type="checkbox" value="checked" id="flexCheckDefault" name="perm">
+            <label class="form-check-label" for="flexCheckDefault">
+              <h6>I give VaxNotifier permission to send me text
+                  <br>
+                   messages at the provided number</h6>
+            </label>
+          </div>
+          </div>
+          <div class="col text-center">
+            <div class="form-group col-md-12 justify-content-center">
+            <input
+            
+              class="btn btn-outline-primary"
+              type="submit"
+              value="Submit"
+            />
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+</div>
+</div>    
+    
+
+  </body>
+</html>
